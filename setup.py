@@ -1,7 +1,7 @@
 from distutils.core import setup
 
 setup(
-    name='Natural Language API',
+    name='Natural Language Processing API',
     version='0.1dev',
     packages=['api'],
     license='MIT',
