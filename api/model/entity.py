@@ -1,4 +1,4 @@
 class Entity:
-    def __init__(self, name, confidence):
+    def __init__(self, name):
         self.name = name
-        self.confidence = confidence
+

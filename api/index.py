@@ -2,17 +2,17 @@ from flask import Flask,jsonify
 from model.intent import Intent
 from model.entity import Entity
 from model.NLPAnalysis import NLPAnalysis
-from api.NLJSONEncoder import NLJSONEncoder
+from api.NLPJSONEncoder import NLPJSONEncoder
 
 app = Flask(__name__)
-app.json_encoder = NLJSONEncoder
+app.json_encoder = NLPJSONEncoder
 
 
 @app.route('/')
 def hello_world():
     nlp_analysis = NLPAnalysis()
-    intent = Intent("test")
-    entity = Entity("test", 2)
+    intent = Intent("test", 2)
+    entity = Entity("test")
     nlp_analysis.add_entity(entity)
     nlp_analysis.add_intent(intent)
     return jsonify(nlp_analysis)

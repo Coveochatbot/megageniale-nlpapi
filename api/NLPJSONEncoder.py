@@ -3,7 +3,8 @@ from model.intent import Intent
 from model.entity import Entity
 from model.NLPAnalysis import NLPAnalysis
 
-class NLJSONEncoder(JSONEncoder):
+
+class NLPJSONEncoder(JSONEncoder):
     def default(self, obj):
         if isinstance(obj, NLPAnalysis):
             return {
@@ -13,10 +14,10 @@ class NLJSONEncoder(JSONEncoder):
         elif isinstance(obj, Intent):
             return {
                 'name': obj.name,
+                'confidence': obj.confidence,
             }
         elif isinstance(obj, Entity):
             return {
                 'name': obj.name,
-                'confidence': obj.confidence,
             }
-        return super(NLJSONEncoder, obj).default(obj)
+        return super(NLPJSONEncoder, obj).default(obj)
