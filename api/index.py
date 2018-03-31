@@ -2,7 +2,7 @@ from flask import Flask,jsonify
 from model.intent import Intent
 from model.entity import Entity
 from model.NLPAnalysis import NLPAnalysis
-from api.NLPJSONEncoder import NLPJSONEncoder
+from NLPJSONEncoder import NLPJSONEncoder
 
 app = Flask(__name__)
 app.json_encoder = NLPJSONEncoder
@@ -19,4 +19,4 @@ def hello_world():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host = '0.0.0.0')
