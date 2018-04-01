@@ -1,4 +1,4 @@
-from flask import Flask,jsonify
+from flask import Flask,jsonify, json, request
 from model.intent import Intent
 from model.entity import Entity
 from model.NLPAnalysis import NLPAnalysis
@@ -8,11 +8,12 @@ app = Flask(__name__)
 app.json_encoder = NLPJSONEncoder
 
 
-@app.route('/')
+@app.route('/analyse',  methods=['POST'])
 def hello_world():
-    dialogflowService = DialogFlowService()
+    content = request.get_json()
+    dialogflowservice = DialogFlowService()
     nlp_analysis = NLPAnalysis()
-    intent = dialogflowService.detect_intent("Who are you?")
+    intent = dialogflowservice.detect_intent(content['sentence'])
     entity = Entity("test")
     nlp_analysis.add_entity(entity)
     nlp_analysis.add_intent(intent)
