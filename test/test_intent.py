@@ -1,5 +1,5 @@
 import unittest
-from model.intent import Intent
+from api.model.intent import Intent
 
 
 class TestIntent(unittest.TestCase):
