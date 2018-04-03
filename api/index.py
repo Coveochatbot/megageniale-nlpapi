@@ -6,12 +6,12 @@ from NLPJSONEncoder import NLPJSONEncoder
 from dialogflow_service import DialogFlowService
 app = Flask(__name__)
 app.json_encoder = NLPJSONEncoder
+dialogflowservice = DialogFlowService()
 
 
-@app.route('/analyse',  methods=['POST'])
+@app.route('/NLP/Analyse',  methods=['POST'])
 def hello_world():
     content = request.get_json()
-    dialogflowservice = DialogFlowService()
     nlp_analysis = NLPAnalysis()
     intent = dialogflowservice.detect_intent(content['sentence'])
     entity = Entity("test")
