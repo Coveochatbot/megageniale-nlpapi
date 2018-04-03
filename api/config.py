@@ -5,10 +5,10 @@ import os
 class Config:
     def __init__(self):
         parser = ConfigParser()
-        script_dir = os.path.dirname(__file__)
-        abs_file_path = os.path.join(script_dir, 'config.ini')
-        found = parser.read(abs_file_path)
-        if not found:
+        directory = os.path.dirname(__file__)
+        absolute_file_path = os.path.join(directory, 'config.ini')
+        file_list = parser.read(absolute_file_path)
+        if not file_list:
             raise ValueError('No config file found!')
         for name in parser.sections():
             self.__dict__.update(parser.items(name))
