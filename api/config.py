@@ -5,8 +5,8 @@ import os
 class Config:
     def __init__(self):
         parser = ConfigParser()
-        found = parser.read('config.ini')
-        if not found:
+        file_list = parser.read('config.ini')
+        if not file_list:
             raise ValueError('No config file found!')
         for name in parser.sections():
             self.__dict__.update(parser.items(name))
