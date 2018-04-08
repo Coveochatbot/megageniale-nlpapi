@@ -1,22 +1,29 @@
 import unittest
 from nose.tools import raises
-from api.config import config
+from api.config import Config
+import os
 
 
 class TestConfig(unittest.TestCase):
 
+    @classmethod
+    def setUpClass(cls):
+        directory = os.path.dirname(__file__)
+        absolute_file_path = os.path.join(directory, 'config.ini')
+        cls.config = Config(absolute_file_path)
+
     def test_get_dialogflow_secret_success(self):
-        self.assertEqual('file.json', config.get('dialogflow_secret'))
+        self.assertEqual('file.json', self.config.get('dialogflow_secret'))
 
     def test_get_project_id_success(self):
-        self.assertEqual('whisperproject', config.get('project_id'))
+        self.assertEqual('whisperproject', self.config.get('project_id'))
 
     def test_get_language_success(self):
-        self.assertEqual('en-US', config.get('language'))
+        self.assertEqual('en-US', self.config.get('language'))
 
     @raises(AttributeError)
     def test_invalid_config_key(self):
-        self.assertRaises(AttributeError, config.get('key_invalid'))
+        self.assertRaises(AttributeError, self.config.get('key_invalid'))
 
     if __name__ == '__main__':
         unittest.main()

@@ -1,15 +1,12 @@
 from configparser import ConfigParser
-from flask import Flask
-import os
-app = Flask(__name__)
 
 
 class Config:
-    def __init__(self):
+    def __init__(self, path):
         parser = ConfigParser()
-        file_list = parser.read('config.ini')
+        file_list = parser.read(path)
         if not file_list:
-            raise ValueError('No config file found in path ' + app.instance_path)
+            raise ValueError('No config file found!')
         for name in parser.sections():
             self.__dict__.update(parser.items(name))
 
@@ -17,5 +14,5 @@ class Config:
         return self.__getattribute__(name)
 
 
-config = Config()
+config = Config('config.ini')
 

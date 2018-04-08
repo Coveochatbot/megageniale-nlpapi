@@ -1,7 +1,7 @@
 import unittest
-from model.intent import Intent
-from model.NLPAnalysis import NLPAnalysis
+from api.model.NLPAnalysis import NLPAnalysis
 from api.dialogflow_service import DialogFlowService
+from api.model.intent import Intent
 import dialogflow
 
 
@@ -14,11 +14,11 @@ class TestDialogflowService(unittest.TestCase):
         query_result = dialogflow.types.QueryResult()
         query_result.intent.display_name = name
         query_result.intent_detection_confidence = confidence
-
         return query_result
 
     def test_retrieve_intent(self):
         intent = self.service.retrieve_intent(self.get_query_result('greating', 1))
+        self.assertIsInstance(intent, Intent)
         self.assertEqual('greating', intent.name)
         self.assertEqual(1, intent.confidence)
 
