@@ -1,7 +1,7 @@
 from flask.json import JSONEncoder
-from model.intent import Intent
-from model.entity import Entity
-from model.NLPAnalysis import NLPAnalysis
+from api.model.intent import Intent
+from api.model.entity import Entity
+from api.model.NLPAnalysis import NLPAnalysis
 
 
 class NLPJSONEncoder(JSONEncoder):

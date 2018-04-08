@@ -1,7 +1,6 @@
 import unittest
 from api.model.NLPAnalysis import NLPAnalysis
 from api.dialogflow_service import DialogFlowService
-from api.model.intent import Intent
 import dialogflow
 
 
