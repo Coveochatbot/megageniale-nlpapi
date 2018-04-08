@@ -1,10 +1,10 @@
 import os
 import uuid
 import dialogflow
-from model.intent import Intent
-from model.entity import Entity
+from api.model.intent import Intent
+from api.model.entity import Entity
 from config import config
-from model.NLPAnalysis import NLPAnalysis
+from api.model.NLPAnalysis import NLPAnalysis
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = config.get('dialogflow_secret')
 
 

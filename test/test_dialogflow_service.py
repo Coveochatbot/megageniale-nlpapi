@@ -19,7 +19,6 @@ class TestDialogflowService(unittest.TestCase):
 
     def test_retrieve_intent(self):
         intent = self.service.retrieve_intent(self.get_query_result('greating', 1))
-        self.assertIsInstance(intent, Intent)
         self.assertEqual('greating', intent.name)
         self.assertEqual(1, intent.confidence)
 
@@ -40,7 +39,7 @@ class TestDialogflowService(unittest.TestCase):
     def test_get_id_from_path(self):
         path = 'projects/whisper234/agent/entityTypes/c907d3df-b079-4de0-9d6f-6f3b7eab2c44'
         id = self.service.get_id_from_path(path)
-        self.assertEquals('c907d3df-b079-4de0-9d6f-6f3b7eab2c44', id)
+        self.assertEqual('c907d3df-b079-4de0-9d6f-6f3b7eab2c44', id)
 
     def test_get_id_from_invalid_path(self):
         path = 'projects/whisper234/agent/c907d3df-b079-4de0-9d6f-6f3b7eab2c44'
