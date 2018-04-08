@@ -8,9 +8,7 @@ class TestConfig(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        directory = os.path.dirname(__file__)
-        absolute_file_path = os.path.join(directory, 'config.ini')
-        cls.config = Config(absolute_file_path)
+        cls.config = Config(os.path.dirname(__file__))
 
     def test_get_dialogflow_secret_success(self):
         self.assertEqual('file.json', self.config.get('dialogflow_secret'))

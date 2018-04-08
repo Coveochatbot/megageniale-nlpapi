@@ -18,7 +18,6 @@ class TestDialogflowService(unittest.TestCase):
 
     def test_retrieve_intent(self):
         intent = self.service.retrieve_intent(self.get_query_result('greating', 1))
-        self.assertIsInstance(intent, Intent)
         self.assertEqual('greating', intent.name)
         self.assertEqual(1, intent.confidence)
 
