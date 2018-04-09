@@ -3,9 +3,8 @@ import os
 
 
 class Config:
-    def __init__(self):
+    def __init__(self, directory):
         parser = ConfigParser()
-        directory = os.path.dirname(__file__)
         absolute_file_path = os.path.join(directory, 'config.ini')
         file_list = parser.read(absolute_file_path)
         if not file_list:
@@ -17,5 +16,5 @@ class Config:
         return self.__getattribute__(name)
 
 
-config = Config()
+config = Config(os.path.dirname(__file__))
 
