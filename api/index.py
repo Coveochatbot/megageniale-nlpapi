@@ -1,6 +1,6 @@
 from flask import Flask,jsonify, request
-from NLPJSONEncoder import NLPJSONEncoder
-from dialogflow_service import DialogFlowService
+from api.NLPJSONEncoder import NLPJSONEncoder
+from api.dialogflow_service import DialogFlowService
 app = Flask(__name__)
 app.json_encoder = NLPJSONEncoder
 dialogflowservice = DialogFlowService()

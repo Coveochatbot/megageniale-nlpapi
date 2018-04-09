@@ -1,4 +1,4 @@
-from model.entity import Entity
+from api.model.entity import Entity
 
 
 class NLPAnalysis:
