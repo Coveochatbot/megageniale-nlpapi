@@ -22,7 +22,7 @@ class DialogFlowService:
         nlp_analysis = NLPAnalysis()
         query_result = self.detect_intent(sentence)
         nlp_analysis.add_intent(self.retrieve_intent(query_result))
-        self.retrieve_entities(nlp_analysis, query_result)
+        nlp_analysis.add_entities(query_result.parameters)
         return nlp_analysis
 
     def detect_intent(self, sentence):
@@ -35,10 +35,6 @@ class DialogFlowService:
 
     def retrieve_intent(self, query_result):
         return Intent(query_result.intent.display_name, query_result.intent_detection_confidence)
-
-    def retrieve_entities(self, nlp_analysis, query_result):
-        for i, entity in query_result.parameters.items():
-            nlp_analysis.add_entity(Entity(entity))
 
     def add_entity_type(self, name):
         entity_types_client = dialogflow.EntityTypesClient()
@@ -88,6 +84,8 @@ class DialogFlowService:
             if(entity_type.display_name == entity_display_name):
                 return self.get_id_from_path(entity_type.name)
         raise ValueError('No entity having specified entity_display_name')
+
+
 
     def get_id_from_path(self, path):
         path_elements = path.split('/')
