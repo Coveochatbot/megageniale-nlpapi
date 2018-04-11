@@ -13,30 +13,26 @@ class TestEntitiesInInstance(unittest.TestCase):
         self.service = DialogFlowService()
 
     def test_scenario(self):
-        outputFile = open(self.OUTPUT_FILE_PATH, 'w')
+        output_file = open(self.OUTPUT_FILE_PATH, 'w')
         for sentence in self.SENTENCES:
             nlp_analysis = self.service.analyse_sentence(sentence)
             for entity in nlp_analysis.entities:
-                outputFile.write(entity.name)
-            outputFile.write("/n")
+                for name in entity.name:
+                    output_file.write(str(name))
+            output_file.write("/n")
 
-        self.add_entities_to_instance(self.FILE_PATH, self.ENTITY_TYPE_NAME)
+        self.service.add_entities_to_instance(self.FILE_PATH, self.ENTITY_TYPE_NAME)
 
-        outputFile.write("After entities are added/n")
+        output_file.write("After entities are added/n")
 
         for sentence in self.SENTENCES:
             nlp_analysis = self.service.analyse_sentence(sentence)
             for entity in nlp_analysis.entities:
-                outputFile.write(entity.name)
-            outputFile.write("/n")
+                for name in entity.name:
+                    output_file.write(str(name))
+            output_file.write("/n")
 
-        outputFile.close()
-
-    def add_entities_to_instance(self, file_path, entity_type_name):
-        file = open(file_path)
-        keywords = file.readlines()
-        self.service.add_entity_type(entity_type_name)
-        self.service.add_entities(entity_type_name, keywords)
+        output_file.close()
 
 
 if __name__ == '__main__':
