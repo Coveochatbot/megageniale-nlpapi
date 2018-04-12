@@ -6,8 +6,8 @@ app.json_encoder = NLPJSONEncoder
 dialogflowservice = DialogFlowService()
 
 
-@app.route('/NLP/Analyse',  methods=['POST'])
-def hello_world():
+@app.route('/NLP/Analyze',  methods=['POST'])
+def nlp_analyze():
     content = request.get_json()
     nlp_analysis = dialogflowservice.analyse_sentence(content['sentence'])
     return jsonify(nlp_analysis)
