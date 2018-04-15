@@ -16,7 +16,7 @@ _mailinglist
 .idea/
 MANIFEST
 dialogflow_secret.json
-
+logs
 
 # Coverage reports
 htmlcov/
